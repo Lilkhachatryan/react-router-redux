@@ -1,25 +1,49 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Route from "./components/router/Route";
+import Link from "./components/router/Link";
+import Atlantic from "./views/Atlantic";
+import Pacific from "./views/Pacific";
+import BlackSea from "./views/BlackSea";
+import Router from "./components/router/Router"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Router>
+      <div className="App">
+        <div
+            className='ui text container'
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <h2 className='ui dividing header'>
+            Which body of water?
+          </h2>
+
+          <ul>
+            <li>
+              <Link to='/atlantic'>
+                <code>/atlantic</code>
+              </Link>
+            </li>
+            <li>
+              <Link to='/pacific'>
+                <code>/pacific</code>
+              </Link>
+            </li>
+            <li>
+              <Link to='/black-sea'>
+                <code>/black-sea</code>
+              </Link>
+            </li>
+          </ul>
+
+          <hr />
+
+          <Route path='/atlantic' component={Atlantic} />
+          <Route path='/pacific' component={Pacific} />
+          <Route path='/black-sea' component={BlackSea} />
+        </div>
+      </div>
+    </Router>
   );
 }
 
